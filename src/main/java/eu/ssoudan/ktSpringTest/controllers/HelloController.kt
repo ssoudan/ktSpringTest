@@ -2,6 +2,8 @@ package eu.ssoudan.ktSpringTest.controllers
 
 /**
  * Created by ssoudan on 10/21/14.
+ *
+ * APLv2
  */
 import org.springframework.stereotype.Controller
 import eu.ssoudan.ktSpringTest.services.HelloService

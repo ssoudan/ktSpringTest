@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Value
 
 /**
  * Created by ssoudan on 10/21/14.
+ *
+ * APLv2
  */
 Configuration
 open class HelloConfiguration() {
