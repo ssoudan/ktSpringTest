@@ -3,7 +3,7 @@ package eu.ssoudan.ktSpringTest
 /**
  * Created by ssoudan on 10/21/14.
  *
- * APLv2
+ * Apache License, Version 2.0
  */
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration

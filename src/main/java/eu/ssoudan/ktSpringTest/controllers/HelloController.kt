@@ -3,7 +3,7 @@ package eu.ssoudan.ktSpringTest.controllers
 /**
  * Created by ssoudan on 10/21/14.
  *
- * APLv2
+ * Apache License, Version 2.0
  */
 import org.springframework.stereotype.Controller
 import eu.ssoudan.ktSpringTest.services.HelloService
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired
 
 Controller
-public class HelloController[Autowired] (val helloService: HelloService, val helloConfiguration: HelloConfiguration) {
+public class HelloController [Autowired] (val helloService: HelloService, val helloConfiguration: HelloConfiguration) {
 
     RequestMapping(array("/"), method = array(RequestMethod.GET))
     ResponseBody
     fun get(): String {
-        val observable = helloService.getSomething()?.toBlockingObservable()
+        val observable = helloService.getSomething()?.toBlocking()
         var msg = ""
         observable?.forEach { msg += "${it} " }
         val value = "GET / -> ${helloConfiguration.testProperties} - ${msg}"

@@ -3,7 +3,7 @@ package eu.ssoudan.ktSpringTest.services
 /**
  * Created by ssoudan on 10/21/14.
  *
- * APLv2
+ * Apache License, Version 2.0
  */
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
