@@ -13,6 +13,7 @@
         <spring-boot.version>1.1.5.RELEASE</spring-boot.version>
         <kotlin.version>0.8.11</kotlin.version>
         <rxjava.version>0.20.6</rxjava.version>
+        <start-class>eu.ssoudan.ktSpringTest.ktSpringTestPackage</start-class>
     </properties>
 
     <repositories>
@@ -152,6 +153,36 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${start-class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <archive>
+                        <manifest>
+                            <mainClass>${start-class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+            </plugin>
+
 
             <plugin>
                 <inherited>true</inherited>
