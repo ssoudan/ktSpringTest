@@ -6,7 +6,7 @@
         <file>${destination}/ktSpringTest.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>rxTest.%i.log.zip</fileNamePattern>
+            <fileNamePattern>ktSpringTest.%i.log.zip</fileNamePattern>
             <minIndex>1</minIndex>
             <maxIndex>3</maxIndex>
         </rollingPolicy>
