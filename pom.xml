@@ -13,7 +13,7 @@
         <spring-boot.version>1.1.5.RELEASE</spring-boot.version>
         <kotlin.version>0.8.11</kotlin.version>
         <rxjava.version>0.20.6</rxjava.version>
-        <start-class>eu.ssoudan.ktSpringTest.ktSpringTestPackage</start-class>
+        <start-class>eu.ssoudan.ktSpringTest.Trampoline</start-class>
     </properties>
 
     <repositories>
@@ -214,6 +214,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -227,21 +237,36 @@
                     </annotationPaths>
                 </configuration>
 
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>compile</id>-->
+                        <!--<phase>compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>compile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+
+                    <!--<execution>-->
+                        <!--<id>test-compile</id>-->
+                        <!--<phase>test-compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>test-compile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+
+                <!-- That's a bit ugly but we need to compile kotlin source first see http://kotlinlang.org/docs/reference/using-maven.html -->
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
+                        <phase>process-sources</phase>
+                        <goals> <goal>compile</goal> </goals>
                     </execution>
 
                     <execution>
                         <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
+                        <phase>process-test-sources</phase>
+                        <goals> <goal>test-compile</goal> </goals>
                     </execution>
                 </executions>
             </plugin>
