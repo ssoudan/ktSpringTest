@@ -4,11 +4,12 @@ import org.springframework.boot.SpringApplication;
 
 /**
  * Created by ssoudan on 10/22/14.
+ *
+ * Apache License, Version 2.0
  */
 public class Trampoline {
 
     public static void main(String[] args) {
-//        KtSpringTestPackage.main(args);
         SpringApplication.run(HelloApp.class, args);
     }
 
