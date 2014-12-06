@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Value
  *
  * Apache License, Version 2.0
  */
+
 Configuration
 open class HelloConfiguration() {
 
     Value("\${ktSpringTest.test:notDefined}")
     var testProperties: String = ""
 
+    Value("\${app.name:unknown service}")
+    var serviceName: String = "";
 }

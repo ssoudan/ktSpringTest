@@ -17,7 +17,7 @@ public class HelloController [Autowired] (val helloService: HelloService, val he
     RequestMapping(array("/"), method = array(RequestMethod.GET))
     ResponseBody
     fun get(): String {
-        val observable = helloService.getSomething()?.toBlocking()
+        val observable = helloService.getSomething().toBlocking()
         var msg = ""
         observable?.forEach { msg += "${it} " }
         val value = "GET / -> ${helloConfiguration.testProperties} - ${msg}"

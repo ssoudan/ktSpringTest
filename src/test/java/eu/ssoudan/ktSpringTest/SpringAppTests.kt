@@ -15,20 +15,24 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.context.support.AnnotationConfigContextLoader
+import eu.ssoudan.ktSpringTest.services.AnotherService
+import eu.ssoudan.ktSpringTest.configuration.GlobalConfiguration
+import eu.ssoudan.ktSpringTest.configuration.HelloConfiguration
 
 RunWith(javaClass<SpringJUnit4ClassRunner>())
 ComponentScan(array("eu.ssoudan"))
 EnableAutoConfiguration
-ContextConfiguration(classes = array(javaClass<HelloService>()), loader = javaClass<AnnotationConfigContextLoader>())
-public class SpringAppTests() {
+ContextConfiguration(classes = array(javaClass<HelloService>(), javaClass<AnotherService>(),
+                                     javaClass<GlobalConfiguration>(), javaClass<HelloConfiguration>()),
+                     loader = javaClass<AnnotationConfigContextLoader>())
+public class SpringAppTests () {
 
     Autowired
-    public var helloService: HelloService = HelloService()
+    val helloService: HelloService? = null
 
     Test
     public fun testGetSomething() {
-
-        Assert.assertEquals(arrayListOf(2L, 3L), helloService.getSomething()?.toBlocking()?.toIterable()?.sort())
+        Assert.assertEquals(arrayListOf(2L, 3L), helloService?.getSomething()?.toBlocking()?.toIterable()?.sort())
     }
 
 }

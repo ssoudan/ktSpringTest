@@ -10,7 +10,7 @@
 
     <properties>
         <spring.version>4.0.6.RELEASE</spring.version>
-        <spring-boot.version>1.1.5.RELEASE</spring-boot.version>
+        <spring-boot.version>1.1.9.RELEASE</spring-boot.version>
         <kotlin.version>0.8.11</kotlin.version>
         <rxjava.version>0.20.6</rxjava.version>
         <start-class>eu.ssoudan.ktSpringTest.Trampoline</start-class>
@@ -143,6 +143,11 @@
                 <version>2.5</version>
                 <configuration>
                     <useDefaultManifestFile>true</useDefaultManifestFile>
+                    <archive>
+                        <manifest>
+                            <mainClass>${start-class}</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
             <plugin>
@@ -154,16 +159,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>${start-class}</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
