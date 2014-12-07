@@ -18,12 +18,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader
 import eu.ssoudan.ktSpringTest.services.AnotherService
 import eu.ssoudan.ktSpringTest.configuration.GlobalConfiguration
 import eu.ssoudan.ktSpringTest.configuration.HelloConfiguration
+import org.springframework.boot.actuate.metrics.repository.InMemoryMetricRepository
 
 RunWith(javaClass<SpringJUnit4ClassRunner>())
 ComponentScan(array("eu.ssoudan"))
 EnableAutoConfiguration
 ContextConfiguration(classes = array(javaClass<HelloService>(), javaClass<AnotherService>(),
-                                     javaClass<GlobalConfiguration>(), javaClass<HelloConfiguration>()),
+                                     javaClass<GlobalConfiguration>(), javaClass<HelloConfiguration>(),
+                                     javaClass<InMemoryMetricRepository>()),
                      loader = javaClass<AnnotationConfigContextLoader>())
 public class SpringAppTests () {
 

@@ -10,6 +10,10 @@ import eu.ssoudan.ktSpringTest.management.HealthCheckedService
 import eu.ssoudan.ktSpringTest.management.HealthCheckedService.HealthInfo
 import org.springframework.beans.factory.annotation.Autowired
 import eu.ssoudan.ktSpringTest.configuration.GlobalConfiguration
+import org.springframework.boot.actuate.metrics.Metric
+import java.util.concurrent.atomic.AtomicInteger
+import org.springframework.boot.actuate.metrics.writer.MetricWriter
+import org.springframework.boot.actuate.metrics.writer.Delta
 
 /**
  * Created by ssoudan on 10/21/14.
@@ -38,13 +42,15 @@ public class AnotherService [Autowired] (val globalConfiguration : GlobalConfigu
 }
 
 Service
-public class HelloService [Autowired] (val otherService : AnotherService ) : HealthCheckedService {
+public class HelloService [Autowired] (val metricWriter: MetricWriter, val otherService : AnotherService ) : HealthCheckedService {
+
     override fun healthCheck(): HealthCheckedService.HealthInfo {
         return HealthInfo(this, HealthCheckedService.HealthStatus.UP).addDependency(otherService)
     }
 
     public fun getSomething(): Observable<Long> {
         lazyLogger.info("i'm here!");
+        metricWriter.increment(Delta("hello.service.call.count", 1));
         return otherService.doSomething().filter { it != null && 2L <= it } as Observable<Long>
     }
 

@@ -11,17 +11,18 @@ import eu.ssoudan.ktSpringTest.configuration.HelloConfiguration
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired
 
-Controller
+RestController
 public class HelloController [Autowired] (val helloService: HelloService, val helloConfiguration: HelloConfiguration) {
 
     RequestMapping(array("/"), method = array(RequestMethod.GET))
-    ResponseBody
-    fun get(): String {
+    fun get(RequestParam("blah", required = false) blah : String?): String {
+
         val observable = helloService.getSomething().toBlocking()
-        var msg = ""
+        var msg = "${blah} "
         observable?.forEach { msg += "${it} " }
+
         val value = "GET / -> ${helloConfiguration.testProperties} - ${msg}"
-        println(value)
+
         return value
     }
 
