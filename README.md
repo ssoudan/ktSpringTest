@@ -3,6 +3,7 @@ ktSpringTest
 
 Basic Spring Boot app in Kotlin
 
+You can read more about it [here](http://ssoudan.eu/posts/2014-12-08-kotlin-springboot.html) on my blog.
 
 # Notes
 
